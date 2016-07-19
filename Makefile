@@ -57,7 +57,7 @@ vendor_remove_dirs := addon.d \
 #-----------------------------------------------------------------------------
 vendor_saved_apps := Bluetooth KeyChain UserDictionaryProvider BackupRestoreConfirmation \
                      FusedLocation ExternalStorageProvider InputDevices ProxyHandler \
-                     DefaultContainerService
+                     DefaultContainerService CMSettingsProvider
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
