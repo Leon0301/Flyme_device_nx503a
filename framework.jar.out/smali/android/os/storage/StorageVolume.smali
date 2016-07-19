@@ -1046,3 +1046,16 @@
     .line 335
     goto :goto_4
 .end method
+
+.method public getFatVolumeId()I
+    .locals 1
+
+    .prologue
+
+    invoke-virtual {p0}, Landroid/os/storage/StorageVolume;->getVolumeId()I
+
+    move-result v0
+
+    return v0
+
+.end method
