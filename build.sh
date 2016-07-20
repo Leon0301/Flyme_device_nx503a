@@ -2,7 +2,7 @@
 #
 #Flyme auto make script
 
-buildDir=/home/leon/Android/Flyme/build
+buildDir=/home/leon/android/flyme/build
 pwd=$PWD
 
 function initEnv() {
@@ -25,8 +25,8 @@ function makeFull() {
         mv flyme*.zip Flyme_NX503A_Leon_$versionName
         mv target*.zip target_files.zip
 
-        mkdir temp
-        cp -rf Flyme*.zip /temp
+        mkdir -p temp
+        cp -rf Flyme*.zip temp
 
         cd temp
         unzip Flyme*.zip
@@ -35,15 +35,13 @@ function makeFull() {
         cp -rf ../../other/AnZhi/* system/app
 
         zip -r flyme.zip *
-        java -jar ../../../build/tools/signapk.jar ../../../build/security/platform.x509.pem ../../../build/security/platform.pk8 flyme.zip Flyme_NX503A_Leon_AnZhi_$versionName
-        mv Flyme*.zip ../
+        java -jar $buildDir/tools/signapk.jar $buildDir/security/platform.x509.pem $buildDir/security/platform.pk8 flyme.zip Flyme_NX503A_Leon_AnZhi_$versionName
+        cd ../..
 		
         echo "<<< 全量包编译完成"
     else
         echo "<<< 全量包编译失败"
     fi
-
-    cd ..
 }
 
 function makeOTA() {
@@ -54,7 +52,7 @@ function makeOTA() {
     case $keyboard in
         Y|y|YES|yes)
         echo ">>> 编译OTA包"	
-        ../../build/tools/releasetools/ota_from_target_files -k ../../build/security/testkey -i history_package/last_target_files.zip out/target_files.zip out/OTA_Flyme_NX503A_$versionName
+        $buildDir/tools/releasetools/ota_from_target_files -k $buildDir/security/testkey -i history_package/last_target_files.zip out/target_files.zip out/OTA_Flyme_NX503A_$versionName
         echo "<<< OTA包编译完成"
     esac
 
@@ -69,6 +67,7 @@ function cleanCache(){
         mkdir history_package
         mkdir Flyme_Done
 
+        mv out/temp/Flyme*.zip out
         mv out/target_files.zip history_package
         mv out/Flyme*.zip Flyme_Done
 
