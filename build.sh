@@ -16,14 +16,27 @@ function makeFull() {
     flyme cleanall
     flyme fullota
 	
-    if [ -e out/flyme*.zip ];then
+    if [ -e out/flyme*.zip ];the
         cd out
 		
         beforeName=$(basename flyme*.zip)
         versionName=${beforeName##*_}
-		
+
         mv flyme*.zip Flyme_NX503A_Leon_$versionName
         mv target*.zip target_files.zip
+
+        mkdir -p temp
+        cp -rf Flyme*.zip /temp
+
+        cd temp
+        unzip Flyme*.zip
+        rm -rf Flyme*.zip
+
+        cp -rf ../../other/AnZhi/* system/app
+
+        zip -r flyme.zip *
+        java -jar ../../../build/tools/signapk.jar ../../../build/security/platform.x509.pem ../../../build/security/platform.pk8 flyme.zip Flyme_NX503A_Leon_AnZhi_$versionName
+        mv Flyme*.zip ../
 		
         echo "<<< 全量包编译完成"
     else
