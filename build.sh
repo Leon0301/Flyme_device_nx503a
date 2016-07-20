@@ -50,15 +50,15 @@ function makeOTA() {
     echo "是否编译OTA包？(Y/n)"
 		
     read keyboard
+
     case $keyboard in
         Y|y|YES|yes)
-        echo ">>> 编译OTA包"
-		
+        echo ">>> 编译OTA包"	
         ../../build/tools/releasetools/ota_from_target_files -k ../../build/security/testkey -i history_package/last_target_files.zip out/target_files.zip out/OTA_Flyme_NX503A_$versionName
-        cleanCache
-
         echo "<<< OTA包编译完成"
-    esac	
+    esac
+
+    cleanCache	
 }
 
 function cleanCache(){
@@ -71,7 +71,10 @@ function cleanCache(){
 
         mv out/target_files.zip history_package
         mv out/Flyme*.zip Flyme_Done
-        mv out/OTA*.zip Flyme_Done
+
+        if [ -e out/OTA*.zip ];then
+            mv out/OTA*.zip Flyme_Done
+        fi
 
         mv history_package/target_files.zip history_package/last_target_files.zip
     fi
