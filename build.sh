@@ -16,7 +16,7 @@ function makeFull() {
     flyme cleanall
     flyme fullota
 	
-    if [ -e out/flyme*.zip ];the
+    if [ -e out/flyme*.zip ];then
         cd out
 		
         beforeName=$(basename flyme*.zip)
