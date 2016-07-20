@@ -674,3 +674,9 @@ service nmbd /system/bin/nmbd -D
 service flymed /system/bin/flymed
     class main
     socket flymed stream 0660 root system
+	
+service tp_node /system/bin/sh /tp_node.sh
+    class main
+    user root
+    group root
+    oneshot
