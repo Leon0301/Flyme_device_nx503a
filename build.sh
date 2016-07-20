@@ -25,7 +25,7 @@ function makeFull() {
         mv flyme*.zip Flyme_NX503A_Leon_$versionName
         mv target*.zip target_files.zip
 
-        mkdir -p temp
+        mkdir temp
         cp -rf Flyme*.zip /temp
 
         cd temp
