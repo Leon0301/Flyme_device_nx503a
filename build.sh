@@ -22,7 +22,7 @@ function makeFull() {
         beforeName=$(basename flyme*.zip)
         versionName=${beforeName##*_}
 
-        mv flyme*.zip Flyme_NX503A_Leon_$versionName
+        mv flyme*.zip Flyme_NX503A_iAcn_$versionName
         mv target*.zip target_files.zip
 
         mkdir -p temp
@@ -35,7 +35,7 @@ function makeFull() {
         cp -rf ../../other/AnZhi/* system/app
 
         zip -r flyme.zip *
-        java -jar $buildDir/tools/signapk.jar $buildDir/security/platform.x509.pem $buildDir/security/platform.pk8 flyme.zip Flyme_NX503A_Leon_AnZhi_$versionName
+        java -jar $buildDir/tools/signapk.jar $buildDir/security/platform.x509.pem $buildDir/security/platform.pk8 flyme.zip Flyme_NX503A_iAcn_AnZhi_$versionName
         cd ../..
 		
         echo "<<< 全量包编译完成"
