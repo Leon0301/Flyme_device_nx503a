@@ -143,8 +143,8 @@ board_modify_apps := SystemUI Telecom TeleService
 # The default value is Nexus-5_Unofficial.
 # You should configure the property according to your device and your ID with replace the "Nexus-5_Unofficial".
 override_property += \
-    ro.flyme.romer=Leon \
-    ro.product.model_romer=NX503A_Leon
+    ro.flyme.romer=iAcn \
+    ro.product.model_romer=NX503A_iAcn
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
