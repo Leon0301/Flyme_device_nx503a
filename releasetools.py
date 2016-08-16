@@ -43,7 +43,7 @@ def AddSuperSU(info):
 	edify.AppendExtra(('ui_print("{*} Finish!");'))
 
 def FullOTA_InstallEnd(info):
-	edify = info.edify
+	edify = info.script
 
 	ModifyBegin(edify)
 	ModifyMount(edify)
