@@ -34,7 +34,7 @@ def AddSuperSU(info):
 	SuperSU = info.input_zip.read("META/SuperSU.zip")
 	common.ZipWriteStr(info.output_zip, "SuperSU/SuperSU.zip", SuperSU)
 	
-	edify = info.edify
+	edify = info.script
 	
 	edify.AppendExtra(('ui_print("{*} Flashing SuperSU");'))
 	edify.AppendExtra(('package_extract_dir("SuperSU", "/tmp/supersu");'))
